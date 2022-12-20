@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ticktask.springboot.webapp.entity.Task;
 import com.ticktask.springboot.webapp.repositories.TaskRepository;
@@ -71,8 +72,8 @@ public class TaskController {
 		return "redirect:task-list";
 	}
 	
-	@GetMapping("edit-task")
-	public String showUpdateTaskPage(@RequestParam int id, ModelMap model) {
+	@GetMapping("edit-task/{id}")
+	public String showUpdateTaskPage(@PathVariable int id, ModelMap model) {
 		Task task = taskRepository.findById(id).get();
 		model.addAttribute("task", task);
 		return "task";

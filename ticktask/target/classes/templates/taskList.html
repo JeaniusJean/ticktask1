@@ -135,7 +135,7 @@ table th {
 									type="submit" value="Edit" class="btn btn-default" />
 							</form>
 						</td>  -->
-				<td><a href="@{edit-task/__${task.id}__}" class="btn btn-default">Edit</a></td> 
+				<td><a href="@{edit-task/${task.id}}" class="btn btn-default">Edit</a></td> 
 				<td>
 							<form th:action="@{delete-task}" method="post">
 								<input type="hidden" name="id" th:value="${task.id}" /> <input
@@ -158,6 +158,6 @@ table th {
 </body>
 <footer class="footer">
 
-	<p>© Tick Task 2022</p>
+	<p>ï¿½ Tick Task 2022</p>
 </footer>
 </html>
