@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Tasks</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script
+	th:src="@{assets/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link
+	href="webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css"
+	rel="stylesheet">
+
+<style>
+.btn-default {
+	background: #E3B448;
+	color: black;
+	box-shadow: 1px 2px 5px #000000
+}
+
+.btn-default:hover {
+	background: #fff;
+	color: #000;
+}
+
+.footer {
+	display: block;
+	text-align: center;
+	position: running(footer);
+}
+</style>
+<style>
+body {
+	background-image: url('/images/2.png');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	font-size: 1.25rem;
+	color: white;
+	font-family: sans-serif;
+	line-height: 150%;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	color: black;
+}
+
+table td, table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+table tr:hover {
+	background-color: #ddd;
+}
+
+table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: white;
+	color: black;
+}
+</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/task-list">Tick Task</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/task-list">My Tasks</a></li>
+
+
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+
+				<li><a href="/logout"><span
+						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="container">
+		<br>
+		<div>
+			<h1>Your tasks for today</h1>
+			<p id="date"></p>
+
+			<div id="current_date"></div>
+			<a href="/add-task" class="btn btn-default">Create new task</a><br>
+			<br>
+			<table class="table">
+				<thead>
+					<tr>
+
+						<th>ProjectName</th>
+						<th>Description</th>
+						<th>Deadline</th>
+						<th>Completed</th>
+					
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="task :${tasks}">
+
+						<td th:text="${task.projectName}" />
+						<td th:text="${task.description}" />
+						<td th:text="${task.deadline}" />
+						<td th:text="${task.completed}" />
+					
+
+				<!-- 	<td><a href="@{edit-task?id=${task.id}}"
+							class="btn btn-default">Edit</a></td>
+							<td> 
+							<td><form th:action="@{edit-task}" method="post">
+								<input type="hidden" name="id" th:value="${task.id}" /> <input
+									type="submit" value="Edit" class="btn btn-default" />
+							</form>
+						</td>  -->
+				<td><a href="@{edit-task/__${task.id}__}" class="btn btn-default">Edit</a></td> 
+				<td>
+							<form th:action="@{delete-task}" method="post">
+								<input type="hidden" name="id" th:value="${task.id}" /> <input
+									type="submit" value="Delete" class="btn btn-default" />
+							</form>
+						</td>
+
+
+
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+	<script>
+		const d = new Date();
+		document.getElementById("date").innerHTML = d.toDateString();
+	</script>
+</body>
+<footer class="footer">
+
+	<p>© Tick Task 2022</p>
+</footer>
+</html>

@@ -1,0 +1,8 @@
+com/ticktask/springboot/webapp/tasks/Task.class
+com/ticktask/springboot/webapp/WebappApplication.class
+com/ticktask/springboot/webapp/security/SpringSecurityConfiguration.class
+com/ticktask/springboot/webapp/tasks/TaskControllerJpa.class
+com/ticktask/springboot/webapp/tasks/TaskController.class
+com/ticktask/springboot/webapp/login/WelcomeController.class
+com/ticktask/springboot/webapp/tasks/TaskRepository.class
+com/ticktask/springboot/webapp/tasks/TaskService.class
